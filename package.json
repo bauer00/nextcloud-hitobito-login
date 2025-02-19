@@ -1,0 +1,34 @@
+{
+    "name": "hitobitologin",
+    "version": "1.0.0",
+    "license": "AGPL-3.0-or-later",
+    "engines": {
+        "node": "^20.0.0",
+        "npm": "^10.0.0"
+    },
+    "scripts": {
+        "build": "webpack --config webpack.js --node-env production --progress",
+        "dev": "webpack --config webpack.js --node-env development --progress",
+        "watch": "webpack --config webpack.js --node-env development --progress --watch",
+        "lint": "eslint src",
+        "stylelint": "stylelint src/**/*.vue src/**/*.scss src/**/*.css"
+    },
+    "browserslist": [
+        "extends @nextcloud/browserslist-config"
+    ],
+    "dependencies": {
+        "@nextcloud/vue": "^8.23.1",
+        "vue": "^2.7.16"
+    },
+    "devDependencies": {
+        "@nextcloud/browserslist-config": "^3.0.1",
+        "@nextcloud/eslint-config": "^8.4.2",
+        "@nextcloud/stylelint-config": "^3.0.1",
+        "@nextcloud/webpack-vue-config": "^6.2.0",
+        "eslint-webpack-plugin": "^4.2.0",
+        "stylelint-webpack-plugin": "^5.0.1"
+    },
+    "volta": {
+        "node": "20.18.3"
+    }
+}
