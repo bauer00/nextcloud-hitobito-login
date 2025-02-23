@@ -7,6 +7,11 @@
             "name": "Bovist",
             "email": "bovist@cevi-buwo.ch",
             "homepage": "https://cevi-buwo.ch"
+        },
+        {
+            "name": "Grizzly",
+            "email": "grizzly@cevi-buwo.ch",
+            "homepage": "https://cevi-buwo.ch"
         }
     ],
     "autoload": {

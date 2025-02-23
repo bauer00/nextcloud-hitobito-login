@@ -11,6 +11,7 @@
         "dev": "webpack --config webpack.js --node-env development --progress",
         "watch": "webpack --config webpack.js --node-env development --progress --watch",
         "lint": "eslint src",
+        "lint-fix": "eslint src --fix",
         "stylelint": "stylelint src/**/*.vue src/**/*.scss src/**/*.css"
     },
     "browserslist": [
@@ -18,7 +19,8 @@
     ],
     "dependencies": {
         "@nextcloud/vue": "^8.23.1",
-        "vue": "^2.7.16"
+        "vue": "^2.7.16",
+        "vue-material-design-icons": "^5.3.1"
     },
     "devDependencies": {
         "@nextcloud/browserslist-config": "^3.0.1",
