@@ -1,25 +1,24 @@
 <?php
+
+declare(strict_types=1);
+
 namespace OCA\HitobitoLogin\Sections;
 
+use OCA\HitobitoLogin\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
-class HitobitoLogin implements IIconSection {
-    private IL10N $l;
-    private IURLGenerator $urlGenerator;
-
-    public function __construct(IL10N $l, IURLGenerator $urlGenerator) {
-        $this->l = $l;
-        $this->urlGenerator = $urlGenerator;
+class AdminSection implements IIconSection {
+    public function __construct(private IL10N $l, private IURLGenerator $urlGenerator) {
     }
 
     public function getIcon(): string {
-        return $this->urlGenerator->imagePath('hitobitologin', 'app-dark.svg');
+        return $this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg');
     }
 
     public function getID(): string {
-        return 'hitobitologin';
+        return Application::APP_ID;
     }
 
     public function getName(): string {

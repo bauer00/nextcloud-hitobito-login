@@ -6,4 +6,7 @@ module.exports = {
 		'jsdoc/require-jsdoc': 'off',
 		'vue/first-attribute-linebreak': 'off',
 	},
+	globals: {
+		appName: true,
+	},
 }

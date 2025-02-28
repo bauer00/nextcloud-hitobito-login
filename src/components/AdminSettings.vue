@@ -1,6 +1,7 @@
 <template>
 	<NcAppContent>
-		<NcSettingsSection name="General" description="General options regarding the login with hitobito"
+		<NcSettingsSection name="General"
+			description="General options regarding the login with hitobito"
 			doc-url="https://github.com/bauer00/nextcloud-hitobito-login">
 			<NcCheckboxRadioSwitch v-model="generalSettings" value="prune" name="generalSettings">
 				Automatically remove
@@ -27,11 +28,12 @@
 		<NcSettingsSection name="Group mapping"
 			description="In this section the mapping between group/role combination with an existing nextcloud group can be done"
 			doc-url="https://github.com/bauer00/nextcloud-hitobito-login">
-			<ul>
-				<li v-for="(mapping, index) in mappings" :key="mapping.id" class="flex">
-					<NcTextField v-model="mappings[index].group" label="Hitobito-Group" />
-					<NcTextField v-model="mappings[index].role" label="Hitobito-Role" />
-					<NcSettingsSelectGroup v-model="mappings[index].targets" placeholder="Groups to map to"
+			<ul v-if="mappings.length > 0" class="group-mappings">
+				<li v-for="(mapping, index) in mappings" :key="mapping.id" class="mapping">
+					<NcTextField v-model="mapping.group" label="Hitobito-Group" />
+					<NcTextField v-model="mapping.role" label="Hitobito-Role" />
+					<NcSettingsSelectGroup v-model="mapping.targets"
+						placeholder="Groups to map to"
 						label="The hidden label" />
 					<NcButton aria-label="Remove mapping" type="secondary" @click="removeMapping(index)">
 						<template v-if="style.indexOf('icon') !== -1" #icon>
@@ -40,6 +42,7 @@
 					</NcButton>
 				</li>
 			</ul>
+
 			<NcButton aria-label="Add mapping" type="secondary" @click="addMapping()">
 				<template v-if="style.indexOf('icon') !== -1" #icon>
 					<Plus :size="20" />
@@ -64,21 +67,40 @@ import Plus from 'vue-material-design-icons/Plus.vue'
 import Minus from 'vue-material-design-icons/Minus.vue'
 
 export default {
-	name: 'Settings',
+	name: 'AdminSettings',
 	components: {
-		NcAppContent, NcSettingsSection, NcCheckboxRadioSwitch, NcSettingsSelectGroup, NcTextField, NcButton, Plus, Minus,
+		NcAppContent,
+		NcSettingsSection,
+		NcCheckboxRadioSwitch,
+		NcSettingsSelectGroup,
+		NcTextField,
+		NcButton,
+		Plus,
+		Minus,
+	},
+	props: {
+		initialState: {
+			type: Object,
+			required: true,
+		},
 	},
 	data() {
 		return {
 			generalSettings: [],
-			groups: [],
 			mappings: [],
 			style: 'icontext',
 		}
 	},
+	mounted() {
+		console.log('AdminSettings:mounted()', this.initialState)
+	},
 	methods: {
 		addMapping() {
-			this.mappings.push({})
+			this.mappings.push({
+				group: '',
+				role: '',
+				targets: [],
+			})
 		},
 		removeMapping(index) {
 			this.mappings.splice(index, 1)
@@ -88,15 +110,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#hitobitologin {
-	display: flex;
-	justify-content: center;
-	margin: 16px;
-}
+.group-mappings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-grid-baseline);
+    margin-bottom: 0.5em;
 
-.flex {
-	display: flex;
-	gap: 5px;
-	align-items: baseline;
+    &::v-deep {
+        .input-field {
+            margin-top: 0;
+        }
+
+        .v-select {
+            &.select {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .mapping {
+        display: flex;
+        gap: var(--default-grid-baseline);
+        align-items: flex-start;
+    }
 }
 </style>

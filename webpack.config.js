@@ -5,11 +5,14 @@ const path = require('path')
 
 const buildMode = process.env.NODE_ENV
 const isDev = buildMode === 'development'
-webpackConfig.devtool = isDev ? 'cheap-source-map' : 'source-map'
 
-const appId = 'hitobitologin'
+const appName = process.env.npm_package_name
+
 webpackConfig.entry = {
-	main: { import: path.join(__dirname, 'src', 'main.js'), filename: appId + '-main.js' },
+	main: {
+		import: path.join(__dirname, 'src', 'settings-admin.js'),
+		filename: appName + '-settings-admin.js',
+	},
 }
 
 webpackConfig.plugins.push(
