@@ -14,6 +14,14 @@ use OCP\Settings\ISettings;
 use OCP\Util;
 
 class AdminSettings implements ISettings {
+    private static array $defaultGeneralSettings = [
+        'options' => [],
+        'base_url' => '',
+        'client_id' => '',
+        'client_secret' => '',
+        'login_button_text' => 'Hitobito Login',
+    ];
+
     public function __construct(
         private IConfig $config,
         private IAppConfig $appConfig,
@@ -23,8 +31,11 @@ class AdminSettings implements ISettings {
     }
 
     public function getForm(): TemplateResponse {
-        $generalSettings = (array) $this->config->getSystemValue('hitobito_login', []);
-        $groupMappings = $this->appConfig->getValueArray(Application::APP_ID, 'groupMappings');
+//        $this->config->deleteSystemValue(Application::APP_ID);
+//        $this->appConfig->deleteKey(Application::APP_ID, 'group_mappings');
+
+        $generalSettings = (array)$this->config->getSystemValue(Application::APP_ID, self::$defaultGeneralSettings);
+        $groupMappings = $this->appConfig->getValueArray(Application::APP_ID, 'group_mappings');
 
         $this->initialStateService->provideInitialState('admin_settings_state', [
             'save_admin_settings_url' => $this->urlGenerator->linkToRoute(Application::APP_ID . '.settings.saveAdmin'),

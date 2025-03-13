@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OCA\HitobitoLogin\AppInfo;
 
+use OCA\HitobitoLogin\AlternativeLogin\HitobitoLogin;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -18,6 +19,7 @@ class Application extends App implements IBootstrap {
     }
 
     public function register(IRegistrationContext $context): void {
+        $context->registerAlternativeLogin(HitobitoLogin::class);
     }
 
     public function boot(IBootContext $context): void {
