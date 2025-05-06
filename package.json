@@ -1,5 +1,6 @@
 {
     "name": "hitobitologin",
+    "description": "Hitobito login for Nextcloud",
     "version": "1.0.0",
     "license": "Apache-2.0",
     "engines": {
@@ -19,9 +20,9 @@
     ],
     "dependencies": {
         "@nextcloud/axios": "^2.5.1",
-        "@nextcloud/dialogs": "^6.1.1",
+        "@nextcloud/dialogs": "^6.2.0",
         "@nextcloud/initial-state": "^2.2.0",
-        "@nextcloud/vue": "^8.23.1",
+        "@nextcloud/vue": "^8.26.0",
         "vue": "^2.7.16",
         "vue-material-design-icons": "^5.3.1"
     },
@@ -29,11 +30,12 @@
         "@nextcloud/browserslist-config": "^3.0.1",
         "@nextcloud/eslint-config": "^8.4.2",
         "@nextcloud/stylelint-config": "^3.0.1",
-        "@nextcloud/webpack-vue-config": "^6.2.0",
+        "@nextcloud/webpack-vue-config": "^6.3.0",
         "eslint-webpack-plugin": "^4.2.0",
-        "stylelint-webpack-plugin": "^5.0.1"
+        "stylelint-webpack-plugin": "^5.0.1",
+        "vue-loader": "^15.11.1"
     },
     "volta": {
-        "node": "20.18.3"
+        "node": "20.19.1"
     }
 }

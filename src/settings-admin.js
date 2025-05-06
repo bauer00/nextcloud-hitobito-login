@@ -1,5 +1,5 @@
-import { loadState } from '@nextcloud/initial-state'
 import Vue from 'vue'
+import { loadState } from '@nextcloud/initial-state'
 
 import AdminSettings from './components/AdminSettings.vue'
 
@@ -7,8 +7,6 @@ Vue.mixin({
 	methods: {
 		t,
 		n,
-		// OC,
-		// OCA,
 	},
 })
 

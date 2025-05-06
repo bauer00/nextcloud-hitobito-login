@@ -9,12 +9,12 @@
     findUnusedCode="true"
 >
     <projectFiles>
-        <directory name="lib" />
+        <directory name="lib"/>
         <ignoreFiles>
-            <directory name="vendor" />
+            <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
-	<extraFiles>
-		<directory name="vendor"/>
-	</extraFiles>
+    <extraFiles>
+        <directory name="vendor"/>
+    </extraFiles>
 </psalm>
